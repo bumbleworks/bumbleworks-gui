@@ -18,4 +18,4 @@ Bumbleworks.dashboard.wait_for(:people)
 
 puts Bumbleworks.dashboard.ps
 
-run Bumblething
+run Bumbleworks::Gui::RackApp

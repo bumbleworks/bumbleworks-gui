@@ -6,8 +6,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Status</title>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/foundation.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+  <link rel="stylesheet" href="<%= @request.script_name %>/assets/css/foundation.min.css">
+  <script src="<%= @request.script_name %>/assets/js/modernizr.js"></script>
 
 </head>
 <body>
@@ -26,8 +26,8 @@
     </div>
   </div>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.map"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/js/foundation.min.js"></script>
+  <script src="<%= @request.script_name %>/assets/js/jquery.js"></script>
+  <script src="<%= @request.script_name %>/assets/js/foundation.min.js"></script>
   <script>
     $(document).foundation();
   </script>
