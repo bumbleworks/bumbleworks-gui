@@ -1,3 +1,31 @@
-<pre>
-<%= Bumbleworks.dashboard.get_trackers %>
-</pre>
+<h2>Trackers</h2>
+<div>
+  <table id="trackers">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="wfid">WFID</th>
+        <th class="sort" data-sort="action">Action</th>
+        <th class="sort" data-sort="conditions">Conditions</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+    <% Bumbleworks.dashboard.get_trackers.values.each do |tracker| %>
+      <% fei = tracker['msg']['fei'] %>
+      <tr>
+        <td class="wfid"><%= fei ? fei['wfid'] : tracker['id'] %></td>
+        <td class="action"><%= tracker['action'] %></td>
+        <td class="conditions"><%= tracker['conditions'] %></td>
+        <td class="msg"><%= tracker['msg'] %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  var options = {
+    valueNames: [ 'wfid', 'action', 'id', 'conditions' ]
+  };
+  var trackerList = new List('trackers', options);
+</script>
