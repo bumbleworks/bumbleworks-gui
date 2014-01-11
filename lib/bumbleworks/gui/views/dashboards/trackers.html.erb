@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody class="list">
-    <% Bumbleworks.dashboard.get_trackers.values.each do |tracker| %>
+    <% @trackers.each do |tracker| %>
       <% fei = tracker['msg']['fei'] %>
       <tr>
         <td class="wfid"><%= fei ? fei['wfid'] : tracker['id'] %></td>

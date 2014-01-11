@@ -1,20 +1,15 @@
 ENV['RORY_STAGE'] ||= ENV['RACK_ENV'] || 'development'
 
-require 'bumbleworks'
 require 'bumbleworks/gui'
 
-Bumbleworks.configure do |c|
-  c.storage = {}
-end
+require File.expand_path(File.join('spec', 'fixtures', 'bumbleworks_config.rb'))
+require File.expand_path(File.join('spec', 'support', 'process_testing_helpers.rb'))
 
 Bumbleworks.start_worker!
 
-Bumbleworks.define_process 'warts' do
-  people :task => 'be_funny'
-end
+tp = Bumbleworks.launch!('test_process')
 
-Bumbleworks.launch!('warts')
-Bumbleworks.dashboard.wait_for(:people)
+wait_until { tp.trackers.count == 1 }
 
 puts Bumbleworks.dashboard.ps
 

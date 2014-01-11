@@ -6,4 +6,8 @@ class DashboardsController < Rory::Controller
   def index
     @ps = Bumbleworks.dashboard.ps
   end
+
+  def trackers
+    @trackers = Bumbleworks.dashboard.get_trackers.values
+  end
 end

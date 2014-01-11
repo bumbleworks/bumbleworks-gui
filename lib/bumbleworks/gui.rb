@@ -1,4 +1,6 @@
 require "rory"
+require "rack"
+require 'bumbleworks'
 require "bumbleworks/gui/version"
 
 module Bumbleworks
