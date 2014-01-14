@@ -1,0 +1,13 @@
+<dl>
+  <dt>Process ID</dt>
+  <dd><%= @process.id %></dd>
+
+  <dt>Trackers</td>
+  <dd>
+    <ul>
+      <% @process.trackers.each do |tracker| %>
+        <li><a href="<%= @request.script_name %>/trackers/<%= tracker.id %>"><%= tracker.id %></a></li>
+      <% end %>
+    </ul>
+  </dd>
+</dl>

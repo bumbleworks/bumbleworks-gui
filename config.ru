@@ -7,10 +7,9 @@ require File.expand_path(File.join('spec', 'support', 'process_testing_helpers.r
 
 Bumbleworks.start_worker!
 
-tp = Bumbleworks.launch!('test_process')
+tp = Bumbleworks.launch!('task_process')
+wp = Bumbleworks.launch!('waiting_process')
 
-wait_until { tp.trackers.count == 1 }
-
-puts Bumbleworks.dashboard.ps
+wait_until { wp.trackers.count == 4 }
 
 run Bumbleworks::Gui::RackApp

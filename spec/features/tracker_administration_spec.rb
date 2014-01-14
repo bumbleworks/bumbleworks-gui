@@ -1,13 +1,23 @@
 feature "Tracker management" do
-  before(:each) do
-    Bumbleworks.start_worker!
-    tp = Bumbleworks.launch!('test_process')
-    wait_until { tp.trackers.count == 1 }
-  end
+  let(:tracker_index) { TrackerIndex.new(Capybara) }
+  let(:tracker_detail) { TrackerDetail.new(Capybara) }
 
-  scenario "Admin views list of trackers" do    
+  scenario "Admin views tracker index" do
+    process1 = Bumbleworks.launch!('waiting_process')
+    process2 = Bumbleworks.launch!('waiting_process')
+    wait_until { process1.trackers.count == 4 && process2.trackers.count == 4 }
     visit '/trackers'
 
-    expect(page).to have_text("non_admin_stuff_done")
+    expect(tracker_index).to have_trackers(process1.trackers + process2.trackers)
+  end
+
+  scenario "Admin views tracker detail" do
+    process = Bumbleworks.launch!('waiting_process')
+    wait_until { process.trackers.count == 4 }
+    tracker = process.trackers.first
+
+    visit "/trackers/#{tracker.id}"
+
+    expect(tracker_detail).to have_tracker(tracker)
   end
 end

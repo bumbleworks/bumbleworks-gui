@@ -20,4 +20,12 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+
+  config.before(:suite, :type => :features) do
+    Bumbleworks.start_worker!
+  end
+
+  config.after(:suite, :type => :features) do
+    Bumbleworks.dashboard.worker.shutdown
+  end
 end

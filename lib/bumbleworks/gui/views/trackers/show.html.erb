@@ -1,0 +1,13 @@
+<dl>
+  <dt>Tracker ID</dt>
+  <dd><%= @tracker.id %></dd>
+
+  <dt>Process</dt>
+  <dd><a href="<%= @request.script_name %>/processes/<%= @tracker.wfid %>"><%= @tracker.wfid %></a></dd>
+
+  <dt>Expressions</dt>
+  <dd><%= @tracker.waiting_expression %></dd>
+
+  <dt>Original Hash</dt>
+  <dd><%= @tracker.original_hash %></dd>
+</dl>
