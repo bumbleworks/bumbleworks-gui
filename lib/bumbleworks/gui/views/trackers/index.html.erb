@@ -6,7 +6,6 @@
         <th class="sort" data-sort="id">ID</th>
         <th class="sort" data-sort="action">Action</th>
         <th class="sort" data-sort="conditions">Conditions</th>
-        <th>Message</th>
       </tr>
     </thead>
     <tbody class="list">
@@ -15,7 +14,6 @@
         <td class="id"><a href="<%= @request.script_name %>/trackers/<%= tracker.id %>"><%= tracker.id %></a></td>
         <td class="action"><%= tracker.action %></td>
         <td class="conditions"><%= tracker.conditions %></td>
-        <td class="msg"><%= tracker.original_hash['msg'] %></td>
       </tr>
     <% end %>
     </tbody>
