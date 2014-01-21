@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Status</title>
   <link rel="stylesheet" href="<%= @request.script_name %>/assets/css/foundation.min.css">
-  <link rel="stylesheet" href="<%= @request.script_name %>/assets/css/application.css">
+  <link rel="stylesheet" href="<%= @request.script_name %>/assets/css/application.css?<%= (Time.now.to_f * 100).floor %>">
   <script src="<%= @request.script_name %>/assets/js/modernizr.js"></script>
   <script src="<%= @request.script_name %>/assets/js/list.min.js"></script>
 
