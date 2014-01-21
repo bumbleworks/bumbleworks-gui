@@ -3,4 +3,5 @@ Bumbleworks::Gui::Application.set_routes do
   match '/trackers', :to => 'trackers#index', :methods => [:get]
   match '/processes/:id', :to => 'processes#show', :methods => [:get]
   match '/processes', :to => 'processes#index', :methods => [:get]
+  match '/', :to => 'dashboards#index', :methods => [:get]
 end
