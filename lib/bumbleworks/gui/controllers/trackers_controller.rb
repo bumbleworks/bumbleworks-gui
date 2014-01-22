@@ -4,9 +4,7 @@ class TrackersController < Rory::Controller
   end
 
   def index
-    @trackers = Bumbleworks.dashboard.get_trackers.map do |tid, attrs|
-      Bumbleworks::Tracker.new(tid, attrs)
-    end
+    @trackers = Bumbleworks::Tracker.all
   end
 
   def show

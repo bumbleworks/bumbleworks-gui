@@ -4,9 +4,7 @@ class ProcessesController < Rory::Controller
   end
 
   def index
-    @processes = Bumbleworks.dashboard.process_wfids.map do |ps|
-      Bumbleworks::Process.new(ps)
-    end
+    @processes = Bumbleworks::Process.all
   end
 
   def show

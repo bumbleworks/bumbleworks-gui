@@ -4,12 +4,8 @@ class DashboardsController < Rory::Controller
   end
 
   def index
-    @processes = Bumbleworks.dashboard.process_wfids.map do |ps|
-      Bumbleworks::Process.new(ps)
-    end
-    @trackers = Bumbleworks.dashboard.get_trackers.map do |tid, attrs|
-      Bumbleworks::Tracker.new(tid, attrs)
-    end
+    @processes = Bumbleworks::Process.all
+    @trackers = Bumbleworks::Tracker.all
     @tasks = Bumbleworks::Task.all
   end
 end
