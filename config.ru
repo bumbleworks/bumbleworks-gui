@@ -7,7 +7,7 @@ require File.expand_path(File.join('spec', 'support', 'process_testing_helpers.r
 
 Bumbleworks.start_worker!
 
-tp = Bumbleworks.launch!('task_process')
+tp = Bumbleworks.launch!('task_process', :entity => Widget.new(54))
 wp = Bumbleworks.launch!('waiting_process')
 
 wait_until { wp.trackers.count == 4 }
