@@ -6,11 +6,7 @@
 
   <dt>Trackers</dt>
   <dd>
-    <ul>
-      <% @process.trackers.each do |tracker| %>
-        <li><a href="<%= @request.script_name %>/trackers/<%= tracker.id %>"><%= tracker.id %></a></li>
-      <% end %>
-    </ul>
+    <%= @trackers = @process.trackers; render 'shared/trackers' %>
   </dd>
 
   <dt>Leaves</dt>

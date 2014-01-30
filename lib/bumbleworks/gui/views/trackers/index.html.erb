@@ -1,23 +1,6 @@
 <h2>Trackers</h2>
 <div>
-  <table id="trackers">
-    <thead>
-      <tr>
-        <th class="sort" data-sort="id">ID</th>
-        <th class="sort" data-sort="action">Action</th>
-        <th class="sort" data-sort="conditions">Conditions</th>
-      </tr>
-    </thead>
-    <tbody class="list">
-    <% @trackers.each do |tracker| %>
-      <tr>
-        <td class="id"><a href="<%= @request.script_name %>/trackers/<%= tracker.id %>"><%= tracker.id %></a></td>
-        <td class="action"><%= tracker.action %></td>
-        <td class="conditions"><%= tracker.conditions %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <%= render 'shared/trackers' %>
 </div>
 
 <script>
