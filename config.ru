@@ -12,4 +12,6 @@ wp = Bumbleworks.launch!('waiting_process')
 
 wait_until { wp.trackers.count == 4 }
 
+Bumbleworks::Task.first.complete
+
 run Bumbleworks::Gui::RackApp
