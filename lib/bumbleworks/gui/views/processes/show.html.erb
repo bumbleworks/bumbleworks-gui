@@ -10,4 +10,26 @@
       <% end %>
     </ul>
   </dd>
+
+  <dt>Leaves</dt>
+  <dd>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Expression</th>
+          <th>Error</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @process.leaves.each do |l| %>
+          <tr>
+            <td><a href="<%= @request.script_name %>/processes/<%= @process.id %>/expressions/<%= l.fei.expid %>"><%= l.fei.expid %></a></td>
+            <td><%= l.tree %></td>
+            <td><%= l.error.message if l.error %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </dd>
 </dl>

@@ -1,0 +1,10 @@
+<dl>
+  <dt>Process</dt>
+  <dd><a href="<%= @request.script_name %>/processes/<%= @expression.wfid %>"><%= @expression.wfid %></a></dd>
+
+  <dt>Expression ID</dt>
+  <dd><%= @expression.fei.expid %></dd>
+
+  <dt>Error</dt>
+  <dd><%= @expression.error.message if @expression.error %></dd>
+</dl>
