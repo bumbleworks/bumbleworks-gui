@@ -1,3 +1,5 @@
+<div id="fluo"></div>
+
 <dl>
   <dt>Process ID</dt>
   <dd><%= @process.id %></dd>
@@ -32,4 +34,21 @@
       </tbody>
     </table>
   </dd>
+
+  <script>
+    var Fluos = {
+      'fluo': {
+        'tree': <%= Rufus::Json.encode(@process.original_tree) %>,
+        'pins': [
+        <% @process.leaves.each do |l| %>
+          <% if l.error %>
+            { 'expid': '<%= l.fei.expid %>', 'type': 'error', 'label': 'er' },
+          <% else %>
+            { 'expid': '<%= l.fei.expid %>', 'type': 'workitem' },
+          <% end %>
+        <% end %>
+        ]
+      }
+    }
+  </script>
 </dl>
