@@ -15,7 +15,7 @@
     <% @processes.each do |process| %>
       <tr>
         <td class="id"><a href="<%= @request.script_name %>/processes/<%= process.id %>"><%= process.id %></a></td>
-        <td class="entity"><%= process.entity %></td>
+        <td class="entity"><%= process.entity_name %></td>
         <td class="subscribed-events"><%= process.subscribed_events %></td>
         <td class="task-count"><%= process.tasks.count %></td>
         <td class="error-count"><%= process.errors.count %></td>
