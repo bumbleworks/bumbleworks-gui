@@ -1,6 +1,7 @@
 <h2>Processes</h2>
-<div>
-  <table id="processes">
+<div id="processes">
+  <ul class="pagination paginationTop"></ul>
+  <table>
     <thead>
       <tr>
         <th class="sort" data-sort="id">ID</th>
@@ -24,11 +25,17 @@
     <% end %>
     </tbody>
   </table>
+  <ul class="pagination paginationBottom"></ul>
 </div>
 
 <script>
   var options = {
-    valueNames: [ 'id', 'entity', 'task-count', 'error-count', 'tracker-count' ]
+    valueNames: [ 'id', 'entity', 'task-count', 'error-count', 'tracker-count' ],
+    page: 50,
+    plugins: [
+      ListPagination({name: "paginationTop", paginationClass: 'paginationTop', outerWindow: 1}),
+      ListPagination({name: "paginationBottom", paginationClass: 'paginationBottom', outerWindow: 1}),
+    ]
   };
   var trackerList = new List('processes', options);
 </script>
