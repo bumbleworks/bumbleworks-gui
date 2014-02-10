@@ -5,7 +5,7 @@ feature "Tracker management" do
   scenario "Admin views tracker index" do
     process1 = Bumbleworks.launch!('waiting_process')
     process2 = Bumbleworks.launch!('waiting_process')
-    wait_until { process1.trackers.count == 4 && process2.trackers.count == 4 }
+    wait_until { process1.reload.trackers.count == 4 && process2.reload.trackers.count == 4 }
     visit '/trackers'
 
     expect(tracker_index).to have_trackers(process1.trackers + process2.trackers)
@@ -13,7 +13,7 @@ feature "Tracker management" do
 
   scenario "Admin views tracker detail" do
     process = Bumbleworks.launch!('waiting_process')
-    wait_until { process.trackers.count == 4 }
+    wait_until { process.reload.trackers.count == 4 }
     tracker = process.trackers.first
 
     visit "/trackers/#{tracker.id}"

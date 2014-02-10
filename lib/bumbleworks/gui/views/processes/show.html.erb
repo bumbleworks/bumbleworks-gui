@@ -4,6 +4,11 @@
   <dt>Process ID</dt>
   <dd><%= @process.id %></dd>
 
+  <dt>Tasks</dt>
+  <dd>
+    <%= @tasks = @process.tasks; render 'shared/tasks' %>
+  </dd>
+
   <dt>Trackers</dt>
   <dd>
     <%= @trackers = @process.trackers; render 'shared/trackers' %>

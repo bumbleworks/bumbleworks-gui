@@ -5,5 +5,7 @@ Bumbleworks::Gui::Application.set_routes do
   match '/processes/:pid/expressions/:id/cancel', :to => 'expressions#cancel', :methods => [:get]
   match '/processes/:id', :to => 'processes#show', :methods => [:get]
   match '/processes', :to => 'processes#index', :methods => [:get]
+  match '/tasks/:id', :to => 'tasks_admin#show', :methods => [:get]
+  match '/tasks', :to => 'tasks_admin#index', :methods => [:get]
   match '/', :to => 'dashboards#index', :methods => [:get]
 end
