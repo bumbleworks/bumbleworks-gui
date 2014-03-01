@@ -11,8 +11,6 @@ module Bumbleworks
 end
 
 require_relative "gui/config/application"
-Bumbleworks::Gui::Application.root = File.join(File.dirname(__FILE__), 'gui')
-Bumbleworks::Gui::Application.autoload_all_files
 
 Bumbleworks::Gui::RackApp = Rack::Builder.new {
   run Bumbleworks::Gui::Application.instance

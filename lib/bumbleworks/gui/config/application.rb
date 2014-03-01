@@ -4,3 +4,6 @@ module Bumbleworks
     end
   end
 end
+
+Bumbleworks::Gui::Application.root = File.expand_path('..', File.dirname(__FILE__))
+Bumbleworks::Gui::Application.autoload_all_files
