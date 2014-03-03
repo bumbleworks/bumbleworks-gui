@@ -1,25 +1,36 @@
+<% existing_wfids = Bumbleworks.dashboard.process_wfids %>
 <div id="processes">
   <table class="pure-table pure-table-bordered">
     <thead>
       <tr>
         <th class="sort" data-sort="id">ID</th>
         <th class="sort" data-sort="entity">Entity</th>
-        <th class="sort" data-sort="subscribed-events">Subscribed Events</th>
-        <th class="sort" data-sort="task-count">Tasks</th>
-        <th class="sort" data-sort="error-count">Errors</th>
-        <th class="sort" data-sort="tracker-count">Trackers</th>
+        <% if false # see below %>
+          <th class="sort" data-sort="subscribed-events">Subscribed Events</th>
+          <th class="sort" data-sort="task-count">Tasks</th>
+          <th class="sort" data-sort="error-count">Errors</th>
+          <th class="sort" data-sort="tracker-count">Trackers</th>
+        <% end %>
       </tr>
     </thead>
     <tbody class="list">
     <% processes.each do |process| %>
-      <tr>
-        <td class="id"><a href="<%= base_url %>/processes/<%= process.id %>"><%= process.id %></a></td>
-        <td class="entity"><%= process.entity_name %></td>
-        <td class="subscribed-events"><%= process.subscribed_events %></td>
-        <td class="task-count"><%= process.tasks.count %></td>
-        <td class="error-count"><%= process.errors.count %></td>
-        <td class="tracker-count"><%= process.trackers.count %></td>
-      </tr>
+      <% if existing_wfids.include?(process.id) %>
+        <tr>
+          <td class="id"><a href="<%= base_url %>/processes/<%= process.id %>"><%= process.id %></a></td>
+          <td class="entity"><%= process.entity_name %></td>
+          <% if false # need optimization before these will work %>
+            <td class="subscribed-events"><%= process.subscribed_events %></td>
+            <td class="task-count"><%= process.tasks.count %></td>
+            <td class="error-count"><%= process.errors.count %></td>
+            <td class="tracker-count"><%= process.trackers.count %></td>
+          <% end %>
+        </tr>
+      <% else %>
+        <tr>
+          <td colspan="2"><em>Process <%= process.id %> no longer exists.</em></td>
+        </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>
