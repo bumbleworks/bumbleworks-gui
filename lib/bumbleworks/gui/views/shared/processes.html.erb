@@ -5,6 +5,7 @@
       <tr>
         <th class="sort" data-sort="id">ID</th>
         <th class="sort" data-sort="entity">Entity</th>
+        <th class="sort" data-sort="definition">Type</th>
         <% if false # see below %>
           <th class="sort" data-sort="subscribed-events">Subscribed Events</th>
           <th class="sort" data-sort="task-count">Tasks</th>
@@ -19,6 +20,7 @@
         <tr>
           <td class="id"><a href="<%= base_url %>/processes/<%= process.id %>"><%= process.id %></a></td>
           <td class="entity"><%= process.entity_name %></td>
+          <td class="definition"><%= process.definition_name %></td>
           <% if false # need optimization before these will work %>
             <td class="subscribed-events"><%= process.subscribed_events %></td>
             <td class="task-count"><%= process.tasks.count %></td>
@@ -28,7 +30,7 @@
         </tr>
       <% else %>
         <tr>
-          <td colspan="2"><em>Process <%= process.id %> no longer exists.</em></td>
+          <td colspan="3"><em>Process <%= process.id %> no longer exists.</em></td>
         </tr>
       <% end %>
     <% end %>
