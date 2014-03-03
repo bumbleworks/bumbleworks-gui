@@ -1,14 +1,6 @@
-class ProcessIndex
-  def initialize(session)
-    @session = session
-  end
-
-  def page
-    @session.page
-  end
-
+class ProcessIndex < WindowDriver
   def has_process?(process)
-    page.has_text?(process.wfid)
+    page.has_text?(process.wfid) && page.has_text?(process.entity_name)
   end
 
   def has_processes?(processes)

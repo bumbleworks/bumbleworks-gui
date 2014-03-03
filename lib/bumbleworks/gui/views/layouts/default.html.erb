@@ -6,45 +6,50 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Status</title>
-  <link rel="stylesheet" href="<%= @request.script_name %>/assets/css/foundation.min.css">
-  <link rel="stylesheet" href="<%= @request.script_name %>/assets/css/application.css?<%= (Time.now.to_f * 100).floor %>">
-  <link rel="stylesheet" href="<%= @request.script_name %>/assets/css/ruote-fluo.css">
-  <script src="<%= @request.script_name %>/assets/js/modernizr.js"></script>
-  <script src="<%= @request.script_name %>/assets/js/list.min.js"></script>
-  <script src="<%= @request.script_name %>/assets/js/list.pagination.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.4.2/pure-min.css">
+  <link rel="stylesheet" href="<%= base_url %>/assets/css/side-menu.css">
+  <link rel="stylesheet" href="<%= base_url %>/assets/css/application.css?<%= (Time.now.to_f * 100).floor %>">
+  <link rel="stylesheet" href="<%= base_url %>/assets/css/ruote-fluo.css">
+  <script src="<%= base_url %>/assets/js/jquery.js"></script>
+  <script src="<%= base_url %>/assets/js/list.min.js"></script>
+  <script src="<%= base_url %>/assets/js/list.pagination.min.js"></script>
 
 </head>
 <body>
-  <div class="fixed">
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="<%= @request.script_name %>/">bumbleworks</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+<div id="layout">
+  <!-- Menu toggle -->
+  <a href="#menu" id="menuLink" class="menu-link">
+    <!-- Hamburger icon -->
+    <span></span>
+  </a>
+
+  <div id="menu">
+    <div class="pure-menu pure-menu-open">
+      <a class="pure-menu-heading" href="<%= base_url %>/">bumbleworks</a>
+      <ul>
+        <li><a href="<%= base_url %>/entities">Entities</a></li>
+        <li><a href="<%= base_url %>/processes">Processes</a></li>
+        <li><a href="<%= base_url %>/trackers">Trackers</a></li>
+        <li><a href="<%= base_url %>/tasks">Tasks</a></li>
       </ul>
-      <section class="top-bar-section">
-        <ul class="left">
-          <li><a href="<%= @request.script_name %>/processes">Processes</a></li>
-          <li><a href="<%= @request.script_name %>/trackers">Trackers</a></li>
-        </ul>
-      </section>
-    </nav>
+    </div>
   </div>
 
-  <div class="row">
-    <div class="large-12 columns">
+  <div id="main">
+    <div class="header">
+      <h1><%= title %></h1>
+    </div>
+
+    <div class="content">
       <%= yield %>
     </div>
   </div>
 
-  <script src="<%= @request.script_name %>/assets/js/jquery.js"></script>
-  <script src="<%= @request.script_name %>/assets/js/foolbox.min.js"></script>
-  <script src="<%= @request.script_name %>/assets/js/ruote-fluo.min.js"></script>
-  <script src="<%= @request.script_name %>/assets/js/fluo_helper.js"></script>
-  <script src="<%= @request.script_name %>/assets/js/foundation.min.js"></script>
+  <script src="<%= base_url %>/assets/js/foolbox.min.js"></script>
+  <script src="<%= base_url %>/assets/js/ruote-fluo.min.js"></script>
+  <script src="<%= base_url %>/assets/js/fluo_helper.js"></script>
+  <script src="<%= base_url %>/assets/js/application.js"></script>
   <script>
-    $(document).foundation();
     $(document).ready(function() {
       FluoHelper.drawAllSets();
     });

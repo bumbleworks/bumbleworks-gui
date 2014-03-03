@@ -1,0 +1,46 @@
+<% if entity_class.processes.any? %>
+  <h3>Registered Processes</h3>
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Attribute</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% entity_class.processes.each do |type, options| %>
+      <tr>
+        <td><%= type %></td>
+        <td><em><%= options[:attribute] %></em></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<h3>Entities</h3>
+<div id="entities">
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="id">ID</th>
+        <th class="sort" data-sort="name">Name</th>
+        <th class="sort" data-sort="process-count">Processes</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+    <% entities.each do |entity| %>
+      <tr>
+        <td class="id"><a href="<%= base_url %>/entities/<%= "#{entity_class.entity_type}/#{entity.id}" %>"><%= entity.id %></a></td>
+        <td class="name"><%= entity.to_s %></td>
+        <td class="process-count"><%= entity.processes.count %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'shared/list_js_script', :locals => {
+  :list_id => 'entities',
+  :rows => entities.count
+} %>

@@ -1,20 +1,28 @@
-class ExpressionsController < Rory::Controller
-  def layout
-    'default'
-  end
+module Bumbleworks
+  module Gui
+    class ExpressionsController < ApplicationController
+      def show
+        expose :expression => expression, :process => process
+      end
 
-  def show
-    get_expression
-  end
+      def cancel
+        if params[:action] == 'kill'
+          expression.kill!
+        else
+          expression.cancel!
+        end
+        redirect("/processes/#{process.id}")
+      end
 
-  def cancel
-    get_expression
-    Bumbleworks.dashboard.cancel_expression(@expression)
-    redirect("/processes/#{@process.id}")
-  end
+    private
 
-  def get_expression
-    @process = Bumbleworks::Process.new(@params[:pid])
-    @expression = @process.expressions.detect { |exp| exp.fei.expid == @params[:id] }
+      def expression
+        process.expression_at_position(params[:id])
+      end
+
+      def process
+        Bumbleworks::Process.new(params[:pid])
+      end
+    end
   end
 end

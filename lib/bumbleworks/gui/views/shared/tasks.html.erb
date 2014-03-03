@@ -1,20 +1,28 @@
-<table id="tasks">
-  <thead>
-    <tr>
-      <th class="sort" data-sort="id">ID</th>
-      <th class="sort" data-sort="name">Name</th>
-      <th class="sort" data-sort="role">Role</th>
-      <th class="sort" data-sort="claimant">Claimant</th>
-    </tr>
-  </thead>
-  <tbody class="list">
-  <% @tasks.each do |task| %>
-    <tr>
-      <td class="id"><a href="<%= @request.script_name %>/tasks/<%= task.id %>"><%= task.id %></a></td>
-      <td class="name"><%= task.to_s %></td>
-      <td class="role"><%= task.role %></td>
-      <td class="claimant"><%= task.claimant %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div id="tasks">
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="id">ID</th>
+        <th class="sort" data-sort="name">Name</th>
+        <th class="sort" data-sort="role">Role</th>
+        <th class="sort" data-sort="claimant">Claimant</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+    <% tasks.each do |task| %>
+      <tr>
+        <td class="id"><a href="<%= base_url %>/tasks/<%= task.id %>"><%= task.id %></a></td>
+        <td class="name"><%= task.to_s %></td>
+        <td class="role"><%= task.role %></td>
+        <td class="claimant"><%= task.claimant %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<%= render 'shared/list_js_script', :locals => {
+  :list_id => 'tasks',
+  :rows => tasks.count
+} %>

@@ -3,9 +3,9 @@ feature "Process management" do
   let(:process_detail) { ProcessDetail.new(Capybara) }
 
   scenario "Admin views process index" do
-    process1 = Bumbleworks.launch!('task_process')
+    process1 = Bumbleworks.launch!('task_process', :entity => Widget.new(41))
     process2 = Bumbleworks.launch!('task_process')
-    wait_until { process1.tasks.count == 1 && process2.tasks.count == 1 }
+    wait_until { process1.tasks.count == 2 && process2.tasks.count == 2 }
 
     visit '/processes'
 
@@ -13,11 +13,12 @@ feature "Process management" do
   end
 
   scenario "Admin views process detail" do
-    process = Bumbleworks.launch!('task_process')
-    wait_until { process.tasks.count == 1 }
+    process = Bumbleworks.launch!('task_process', :entity => Widget.new(56))
+    wait_until { process.tasks.count == 2 }
 
     visit "/processes/#{process.id}"
 
     expect(process_detail).to have_process(process)
+    expect(process_detail).to have_entity(Widget.new(56))
   end
 end

@@ -1,51 +1,42 @@
-<div id="fluo"></div>
+<h2><%= process.id %></h2>
 
+<div id="fluo"></div>
 <dl>
-  <dt>Process ID</dt>
-  <dd><%= @process.id %></dd>
+  <dt>Definition Name</dt>
+  <dd><%= process.definition_name %></dd>
 
   <dt>Tasks</dt>
   <dd>
-    <%= @tasks = @process.tasks; render 'shared/tasks' %>
+    <%= render 'shared/tasks', :locals => { :tasks => process.tasks } %>
   </dd>
+
+  <% if process.has_entity? %>
+    <dt>Entity</dt>
+    <dd>
+      <a href="<%= base_url %>/entities/<%= "#{process.entity.class.entity_type}/#{process.entity.id}" %>"><%= process.entity_name %></a>
+    </dd>
+  <% end %>
 
   <dt>Trackers</dt>
   <dd>
-    <%= @trackers = @process.trackers; render 'shared/trackers' %>
+    <%= render 'shared/trackers', :locals => { :trackers => process.trackers } %>
   </dd>
 
   <dt>Leaves</dt>
   <dd>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Expression</th>
-          <th>Error</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @process.leaves.each do |l| %>
-          <tr>
-            <td><a href="<%= @request.script_name %>/processes/<%= @process.id %>/expressions/<%= l.fei.expid %>"><%= l.fei.expid %></a></td>
-            <td><%= l.tree %></td>
-            <td><%= l.error.message if l.error %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render 'shared/expressions', :locals => { :expressions => process.leaves } %>
   </dd>
 
   <script>
     var Fluos = {
       'fluo': {
-        'tree': <%= Rufus::Json.encode(@process.original_tree) %>,
+        'tree': <%= Rufus::Json.encode(process.original_tree) %>,
         'pins': [
-        <% @process.leaves.each do |l| %>
+        <% process.leaves.each do |l| %>
           <% if l.error %>
-            { 'expid': '<%= l.fei.expid %>', 'type': 'error', 'label': 'er' },
+            { 'expid': '<%= l.expid %>', 'type': 'error', 'label': 'er' },
           <% else %>
-            { 'expid': '<%= l.fei.expid %>', 'type': 'workitem' },
+            { 'expid': '<%= l.expid %>', 'type': 'workitem' },
           <% end %>
         <% end %>
         ]

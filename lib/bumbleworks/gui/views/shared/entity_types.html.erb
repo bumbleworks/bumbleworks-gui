@@ -1,0 +1,23 @@
+<div id="classes">
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="class">Class</th>
+        <th class="sort" data-sort="count">Count</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+    <% entity_classes.each do |entity_class| %>
+      <tr>
+        <td class="class"><a href="<%= base_url %>/entities/<%= entity_class.entity_type %>"><%= Bumbleworks::Support.titleize(entity_class.entity_type) %></a></td>
+        <td class="count"><%= entity_class.count %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'shared/list_js_script', :locals => {
+  :list_id => 'classes',
+  :rows => entity_classes.count
+} %>

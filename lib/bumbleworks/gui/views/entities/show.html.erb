@@ -1,0 +1,9 @@
+<dl>
+  <dt>Name</dt>
+  <dd><%= entity.to_s %></dd>
+
+  <dt>Processes</dt>
+  <dd>
+    <%= render 'shared/processes', :locals => { :processes => entity.processes } %>
+  </dd>
+</dl>

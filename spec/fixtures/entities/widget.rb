@@ -1,13 +1,9 @@
-class Widget
+require_relative 'mock_entity'
+
+class Widget < MockEntity
   include Bumbleworks::Entity
 
-  attr_accessor :identifier
+  process :task_process
 
-  def initialize(identifier)
-    @identifier = identifier
-  end
-
-  def self.first_by_identifier(identifier)
-    new(identifier)
-  end
+  attr_accessor :task_process_identifier
 end

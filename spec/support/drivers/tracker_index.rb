@@ -1,12 +1,4 @@
-class TrackerIndex
-  def initialize(session)
-    @session = session
-  end
-
-  def page
-    @session.page
-  end
-
+class TrackerIndex < WindowDriver
   def has_tracker?(tracker)
     page.has_text?(tracker.id)
   end

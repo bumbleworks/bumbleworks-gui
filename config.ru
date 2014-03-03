@@ -7,11 +7,23 @@ require File.expand_path(File.join('spec', 'support', 'process_testing_helpers.r
 
 Bumbleworks.start_worker!
 
-tp = Bumbleworks.launch!('task_process', :entity => Widget.new(54))
+Widget.truncate!
+WidgetyFidget.truncate!
+
+widget_processes = 20.times.collect do |i|
+  Widget.new(i).launch_process('task_process')
+end
+
+5.times do |i|
+  WidgetyFidget.new(i)
+end
+
 wp = Bumbleworks.launch!('waiting_process')
 
-wait_until { wp.trackers.count == 4 }
+wait_until { wp.reload.trackers.count == 4 }
 
-Bumbleworks::Task.first.complete
+widget_processes.first.tasks.each do |t|
+  t.complete
+end
 
 run Bumbleworks::Gui::RackApp

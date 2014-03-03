@@ -1,0 +1,13 @@
+<dl>
+  <dt>ID</dt>
+  <dd><%= task.id %></dd>
+
+  <dt>Process</dt>
+  <dd><a href="<%= base_url %>/processes/<%= task.wfid %>"><%= task.wfid %></a></dd>
+
+  <dt>Role</dt>
+  <dd><%= task.role %></dd>
+
+  <dt>Claimant</dt>
+  <dd><%= task.claimant || '<em>unclaimed</em>' %></dd>
+</dl>

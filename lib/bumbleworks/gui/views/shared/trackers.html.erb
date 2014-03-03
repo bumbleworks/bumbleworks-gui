@@ -1,18 +1,25 @@
-<table id="trackers">
-  <thead>
-    <tr>
-      <th class="sort" data-sort="id">ID</th>
-      <th class="sort" data-sort="action">Action</th>
-      <th class="sort" data-sort="conditions">Conditions</th>
-    </tr>
-  </thead>
-  <tbody class="list">
-  <% @trackers.each do |tracker| %>
-    <tr>
-      <td class="id"><a href="<%= @request.script_name %>/trackers/<%= tracker.id %>"><%= tracker.id %></a></td>
-      <td class="action"><%= tracker.action %></td>
-      <td class="conditions"><%= tracker.conditions %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div id="trackers">
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="id">ID</th>
+        <th class="sort" data-sort="action">Action</th>
+        <th class="sort" data-sort="conditions">Conditions</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+    <% trackers.each do |tracker| %>
+      <tr>
+        <td class="id"><a href="<%= base_url %>/trackers/<%= tracker.id %>"><%= tracker.id %></a></td>
+        <td class="action"><%= tracker.action %></td>
+        <td class="conditions"><%= tracker.conditions %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'shared/list_js_script', :locals => {
+  :list_id => 'trackers',
+  :rows => trackers.count
+} %>

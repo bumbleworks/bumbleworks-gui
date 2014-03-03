@@ -1,10 +1,32 @@
 <dl>
   <dt>Process</dt>
-  <dd><a href="<%= @request.script_name %>/processes/<%= @process.id %>"><%= @process.id %></a></dd>
+  <dd><a href="<%= base_url %>/processes/<%= process.id %>"><%= process.id %></a></dd>
 
   <dt>Expression ID</dt>
-  <dd><%= @expression.fei.expid %></dd>
+  <dd><%= expression.expid %></dd>
 
-  <dt>Error</dt>
-  <dd><%= @expression.error.message if @expression.error %></dd>
-</dl>
+  <dt>Actions</dt>
+  <dd>
+    <%= render 'expressions/actions', :locals => { :expression => expression } %>
+  </dd>
+<% if expression.error %>
+  <h3>Error</h3>
+  <dl>
+    <dd>
+      <dt>Type</dt>
+      <dd><%= expression.error.error_class_name %></dd>
+
+      <dt>Message</dt>
+      <dd><%= expression.error.message %></dd>
+
+      <dt>Backtrace</dt>
+      <dd>
+        <ul>
+          <% expression.error.backtrace.each do |btl| %>
+            <li><%= btl %></li>
+          <% end %>
+        </ul>
+      </dd>
+    </dd>
+  </dl>
+<% end %>

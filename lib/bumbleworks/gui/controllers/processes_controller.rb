@@ -1,13 +1,13 @@
-class ProcessesController < Rory::Controller
-  def layout
-    'default'
-  end
+module Bumbleworks
+  module Gui
+    class ProcessesController < ApplicationController
+      def index
+        expose :processes => Bumbleworks::Process.all
+      end
 
-  def index
-    @processes = Bumbleworks::Process.all
-  end
-
-  def show
-    @process = Bumbleworks::Process.new(@params[:id])
+      def show
+        expose :process => Bumbleworks::Process.new(params[:id])
+      end
+    end
   end
 end

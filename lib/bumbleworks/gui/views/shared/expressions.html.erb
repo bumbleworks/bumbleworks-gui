@@ -1,0 +1,27 @@
+<div id="expressions">
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="id">ID</th>
+        <th class="sort" data-sort="tree">Expression</th>
+        <th class="sort" data-sort="error">Error</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <% expressions.each do |exp| %>
+        <tr>
+          <td class="id"><a href="<%= base_url %>/processes/<%= exp.process.id %>/expressions/<%= exp.expid %>"><%= exp.expid %></a></td>
+          <td class="tree"><%= exp.tree %></td>
+          <td class="error"><%= exp.error.message if exp.error %></td>
+          <td><%= render 'expressions/actions', :locals => { :expression => exp } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'shared/list_js_script', :locals => {
+  :list_id => 'expressions',
+  :rows => expressions.count
+} %>

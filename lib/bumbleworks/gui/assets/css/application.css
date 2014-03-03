@@ -1,5 +1,5 @@
 .sort:hover {
-  background-color: #9de;
+  background-color: rgb(151, 196, 241);
 }
 .sort:after {
   width: 0;
@@ -59,4 +59,33 @@
 .top-bar-section ul li .display a:not(.button):hover {
   color: #78a1d4;
   background: #333333;
+}
+
+/* Definition Lists */
+
+dt {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+dd {
+  margin: 0px 0px 15px 0px;
+}
+
+/* Colored buttons */
+
+.button-success, .button-error, .button-warning, .button-secondary {
+  color: white;
+  font-size: 0.8em;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success { background: rgb(28, 184, 65); } /* green */
+.button-error { background: rgb(202, 60, 60); } /* red */
+.button-warning { background: rgb(223, 117, 20); } /* orange */
+.button-secondary { background: rgb(66, 184, 221); } /* lt. blue */
+
+.action-button-group {
+  width: 7.5em;
 }

@@ -1,0 +1,11 @@
+<div class="action-button-group">
+  <form action="<%= "#{base_url}/processes/#{expression.process.id}/expressions/#{expression.expid}/cancel" %>" class="inline" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" name="action" value="cancel" class="pure-button button-warning button-top" id="cancel-button">
+      Cancel
+    </button>
+    <button type="submit" name="action" value="kill" class="pure-button button-error button-bottom" id="kill-button">
+      Kill
+    </button>
+  </form>
+</div>

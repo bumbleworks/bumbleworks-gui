@@ -1,0 +1,21 @@
+<dl>
+  <dt>Entities</dt>
+  <dd>
+  <%= render 'shared/entity_types', :locals => { :entity_classes => entity_classes} %>
+  </dd>
+
+  <dt>Recent Processes (<a href="/processes">View All <%= Bumbleworks::Process.count %></a>)</dt>
+  <dd>
+    <%= render 'shared/processes', :locals => { :processes => recent_processes } %>
+  </dd>
+
+  <dt>Recent Tasks (<a href="/tasks">View All <%= Bumbleworks::Task.count %></a>)</h3>
+  <dd>
+  <%= render 'shared/tasks', :locals => { :tasks => recent_tasks } %>
+  </dd>
+
+  <dt>Trackers</dd>
+  <dd>
+    <a href="/trackers">View all trackers (<%= Bumbleworks::Tracker.count %>)</a>
+  </dd>
+</dl

@@ -1,13 +1,13 @@
-class TrackersController < Rory::Controller
-  def layout
-    'default'
-  end
+module Bumbleworks
+  module Gui
+    class TrackersController < ApplicationController
+      def index
+        expose :trackers => Bumbleworks::Tracker.all
+      end
 
-  def index
-    @trackers = Bumbleworks::Tracker.all
-  end
-
-  def show
-    @tracker = Bumbleworks::Tracker.new(@params[:id])
+      def show
+        expose :tracker => Bumbleworks::Tracker.new(params[:id])
+      end
+    end
   end
 end
