@@ -13,7 +13,7 @@
   <% if process.has_entity? %>
     <dt>Entity</dt>
     <dd>
-      <a href="<%= base_url %>/entities/<%= "#{process.entity.class.entity_type}/#{process.entity.id}" %>"><%= process.entity_name %></a>
+      <a href="<%= base_url %>/entities/<%= "#{process.entity.class.entity_type}/#{process.entity.identifier}" %>"><%= process.entity_name %></a>
     </dd>
   <% end %>
 
