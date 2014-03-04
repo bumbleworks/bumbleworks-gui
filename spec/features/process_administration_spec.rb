@@ -7,7 +7,7 @@ feature "Process management" do
     process2 = Bumbleworks.launch!('task_process')
     wait_until { process1.tasks.count == 2 && process2.tasks.count == 2 }
 
-    visit '/processes'
+    visit_scoped '/processes'
 
     expect(process_index).to have_processes([process1, process2])
   end
@@ -16,7 +16,7 @@ feature "Process management" do
     process = Bumbleworks.launch!('task_process', :entity => Widget.new(56))
     wait_until { process.tasks.count == 2 }
 
-    visit "/processes/#{process.id}"
+    visit_scoped "/processes/#{process.id}"
 
     expect(process_detail).to have_process(process)
     expect(process_detail).to have_entity(Widget.new(56))

@@ -15,7 +15,7 @@ feature "Expression administration" do
   scenario "Admin views expression" do
     expression = process.leaves.first
 
-    visit "/processes/#{process.id}/expressions/#{expression.expid}"
+    visit_scoped "/processes/#{process.id}/expressions/#{expression.expid}"
 
     expect(expression_detail).to have_expression(expression)
   end
@@ -23,25 +23,25 @@ feature "Expression administration" do
   scenario "Admin cancels expression" do
     expression = process.leaves.first
 
-    visit "/processes/#{process.id}/expressions/#{expression.expid}"
+    visit_scoped "/processes/#{process.id}/expressions/#{expression.expid}"
     click_button 'Cancel'
 
     wait_until { process.reload.tasks.count == 1 }
-    visit "/processes/#{process.id}"
+    visit_scoped "/processes/#{process.id}"
     expect(process_detail).not_to have_expression(expression)
   end
 
   scenario "Admin kills expression" do
-    visit "/processes/#{process.id}/expressions/#{error_expression.expid}"
+    visit_scoped "/processes/#{process.id}/expressions/#{error_expression.expid}"
     click_button 'Kill'
 
     wait_until { process.reload.errors.empty? }
-    visit "/processes/#{process.id}"
+    visit_scoped "/processes/#{process.id}"
     expect(process_detail).not_to have_error(NaughtyParticipant::StupidError.new("Oh crumb."))
   end
 
   scenario "Admin views expression errors" do
-    visit "/processes/#{process.id}/expressions/#{error_expression.expid}"
+    visit_scoped "/processes/#{process.id}/expressions/#{error_expression.expid}"
 
     expect(expression_detail).to have_error(NaughtyParticipant::StupidError.new("Oh crumb."))
   end

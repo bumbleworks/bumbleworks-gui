@@ -6,7 +6,7 @@ feature "Task management" do
     process = Bumbleworks.launch!('task_process')
     wait_until { process.tasks.count == 2 }
 
-    visit '/tasks'
+    visit_scoped '/tasks'
 
     expect(task_index).to have_tasks(process.tasks.all)
   end
@@ -15,7 +15,7 @@ feature "Task management" do
     process = Bumbleworks.launch!('task_process')
     task = process.tasks.next_available
 
-    visit "/tasks/#{task.id}"
+    visit_scoped "/tasks/#{task.id}"
 
     expect(task_detail).to have_task(task)
   end

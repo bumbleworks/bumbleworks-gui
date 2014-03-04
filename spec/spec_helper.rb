@@ -9,7 +9,13 @@ require_relative 'support/drivers/window_driver'
 # in spec/support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-Capybara.app = Bumbleworks::Gui::RackApp
+# To simulate the suggested use of mounting the GUI at a path
+# below root, we'll mount it for tests at /bw
+Capybara.app = Rack::Builder.new do
+  map "/bw" do
+    run Bumbleworks::Gui::RackApp
+  end
+end
 
 require_relative 'fixtures/bumbleworks_config.rb'
 
@@ -30,4 +36,6 @@ RSpec.configure do |config|
   config.after(:suite, :type => :features) do
     Bumbleworks.dashboard.worker.shutdown
   end
+
+  config.include PathHelpers
 end

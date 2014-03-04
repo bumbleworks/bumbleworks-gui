@@ -6,7 +6,7 @@ feature "Tracker management" do
     process1 = Bumbleworks.launch!('waiting_process')
     process2 = Bumbleworks.launch!('waiting_process')
     wait_until { process1.reload.trackers.count == 4 && process2.reload.trackers.count == 4 }
-    visit '/trackers'
+    visit_scoped '/trackers'
 
     expect(tracker_index).to have_trackers(process1.trackers + process2.trackers)
   end
@@ -16,7 +16,7 @@ feature "Tracker management" do
     wait_until { process.reload.trackers.count == 4 }
     tracker = process.trackers.first
 
-    visit "/trackers/#{tracker.id}"
+    visit_scoped "/trackers/#{tracker.id}"
 
     expect(tracker_detail).to have_tracker(tracker)
   end

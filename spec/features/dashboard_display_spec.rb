@@ -9,7 +9,7 @@ feature "Dashboard display" do
         process2.reload.trackers.count == 4
     }
 
-    visit '/'
+    visit_scoped '/'
 
     expect(dashboard_detail).to have_count_of(Bumbleworks::Process.all)
     expect(dashboard_detail).to have_count_of(Bumbleworks::Task.all)
