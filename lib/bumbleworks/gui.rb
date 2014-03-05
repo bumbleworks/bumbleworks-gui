@@ -2,7 +2,9 @@ require "rory"
 require "rack"
 require 'bumbleworks'
 require "bumbleworks/gui/version"
+require "bumbleworks/gui/controllers/application_controller"
 require 'json'
+
 Rufus::Json.detect_backend
 
 module Bumbleworks
