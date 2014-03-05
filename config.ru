@@ -26,4 +26,14 @@ widget_processes.first.tasks.each do |t|
   t.complete
 end
 
-run Bumbleworks::Gui::RackApp
+if ENV['MOUNT_AT']
+  app = Rack::Builder.new do
+    map ENV['MOUNT_AT'] do
+      run Bumbleworks::Gui::RackApp
+    end
+  end
+  run app
+else
+  run Bumbleworks::Gui::RackApp
+end
+
