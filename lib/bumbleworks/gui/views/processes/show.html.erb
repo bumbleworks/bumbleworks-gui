@@ -10,10 +10,10 @@
     <%= render 'shared/tasks', :locals => { :tasks => process.tasks } %>
   </dd>
 
-  <% if process.has_entity? %>
+  <% if process.has_entity? && entity = process.entity %>
     <dt>Entity</dt>
     <dd>
-      <a href="<%= base_url %>/entities/<%= "#{process.entity.class.entity_type}/#{process.entity.identifier}" %>"><%= process.entity_name %></a>
+      <a href="<%= path_to 'entities_show', :type => entity.class.entity_type, :id => entity.identifier %>"><%= process.entity_name %></a>
     </dd>
   <% end %>
 

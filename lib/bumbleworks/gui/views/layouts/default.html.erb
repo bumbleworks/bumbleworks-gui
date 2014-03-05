@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Status</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.4.2/pure-min.css">
-  <link rel="stylesheet" href="<%= base_url %>/assets/css/side-menu.css">
-  <link rel="stylesheet" href="<%= base_url %>/assets/css/application.css?<%= (Time.now.to_f * 100).floor %>">
-  <link rel="stylesheet" href="<%= base_url %>/assets/css/ruote-fluo.css">
-  <script src="<%= base_url %>/assets/js/jquery.js"></script>
-  <script src="<%= base_url %>/assets/js/list.min.js"></script>
-  <script src="<%= base_url %>/assets/js/list.pagination.min.js"></script>
+  <link rel="stylesheet" href="<%= base_path %>/assets/css/side-menu.css">
+  <link rel="stylesheet" href="<%= base_path %>/assets/css/application.css?<%= (Time.now.to_f * 100).floor %>">
+  <link rel="stylesheet" href="<%= base_path %>/assets/css/ruote-fluo.css">
+  <script src="<%= base_path %>/assets/js/jquery.js"></script>
+  <script src="<%= base_path %>/assets/js/list.min.js"></script>
+  <script src="<%= base_path %>/assets/js/list.pagination.min.js"></script>
 
 </head>
 <body>
@@ -25,12 +25,12 @@
 
   <div id="menu">
     <div class="pure-menu pure-menu-open">
-      <a class="pure-menu-heading" href="<%= base_url %>/">bumbleworks</a>
+      <a class="pure-menu-heading" href="<%= path_to 'dashboards_show' %>">bumbleworks</a>
       <ul>
-        <li><a href="<%= base_url %>/entities">Entities</a></li>
-        <li><a href="<%= base_url %>/processes">Processes</a></li>
-        <li><a href="<%= base_url %>/trackers">Trackers</a></li>
-        <li><a href="<%= base_url %>/tasks">Tasks</a></li>
+        <li><a href="<%= path_to 'entities_index' %>">Entities</a></li>
+        <li><a href="<%= path_to 'processes_index' %>">Processes</a></li>
+        <li><a href="<%= path_to 'trackers_index' %>">Trackers</a></li>
+        <li><a href="<%= path_to 'tasks_index' %>">Tasks</a></li>
       </ul>
     </div>
   </div>
@@ -45,10 +45,10 @@
     </div>
   </div>
 
-  <script src="<%= base_url %>/assets/js/foolbox.min.js"></script>
-  <script src="<%= base_url %>/assets/js/ruote-fluo.min.js"></script>
-  <script src="<%= base_url %>/assets/js/fluo_helper.js"></script>
-  <script src="<%= base_url %>/assets/js/application.js"></script>
+  <script src="<%= base_path %>/assets/js/foolbox.min.js"></script>
+  <script src="<%= base_path %>/assets/js/ruote-fluo.min.js"></script>
+  <script src="<%= base_path %>/assets/js/fluo_helper.js"></script>
+  <script src="<%= base_path %>/assets/js/application.js"></script>
   <script>
     $(document).ready(function() {
       FluoHelper.drawAllSets();

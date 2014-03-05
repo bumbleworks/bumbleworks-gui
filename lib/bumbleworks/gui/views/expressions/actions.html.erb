@@ -1,5 +1,5 @@
 <div class="action-button-group">
-  <form action="<%= "#{base_url}/processes/#{expression.process.id}/expressions/#{expression.expid}/cancel" %>" class="inline" method="post">
+  <form action="<%= path_to 'expressions_cancel', :pid => expression.process.id, :id => expression.expid %>" class="inline" method="post">
     <input type="hidden" name="_method" value="delete">
     <button type="submit" name="action" value="cancel" class="pure-button button-warning button-top" id="cancel-button">
       Cancel

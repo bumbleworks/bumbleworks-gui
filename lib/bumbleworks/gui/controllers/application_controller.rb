@@ -6,7 +6,7 @@ module Bumbleworks
       end
 
       def before_action
-        expose :title => Bumbleworks::Support.titleize(@route[:controller])
+        expose :title => Bumbleworks::Support.titleize(@route.controller)
       end
     end
   end

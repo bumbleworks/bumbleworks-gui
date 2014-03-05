@@ -11,7 +11,7 @@ module Bumbleworks
         else
           expression.cancel!
         end
-        redirect("/processes/#{process.id}")
+        redirect path_to('processes_show', :id => process.id)
       end
 
     private

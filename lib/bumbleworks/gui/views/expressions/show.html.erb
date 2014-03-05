@@ -1,6 +1,6 @@
 <dl>
   <dt>Process</dt>
-  <dd><a href="<%= base_url %>/processes/<%= process.id %>"><%= process.id %></a></dd>
+  <dd><a href="<%= path_to 'processes_show', :id => process.id %>"><%= process.id %></a></dd>
 
   <dt>Expression ID</dt>
   <dd><%= expression.expid %></dd>

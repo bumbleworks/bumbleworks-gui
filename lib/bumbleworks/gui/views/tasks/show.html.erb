@@ -3,7 +3,7 @@
   <dd><%= task.id %></dd>
 
   <dt>Process</dt>
-  <dd><a href="<%= base_url %>/processes/<%= task.wfid %>"><%= task.wfid %></a></dd>
+  <dd><a href="<%= path_to 'processes_show', :id => task.wfid %>"><%= task.wfid %></a></dd>
 
   <dt>Role</dt>
   <dd><%= task.role %></dd>

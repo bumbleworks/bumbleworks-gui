@@ -3,7 +3,7 @@
   <dd><%= tracker.id %></dd>
 
   <dt>Process</dt>
-  <dd><a href="<%= base_url %>/processes/<%= tracker.wfid %>"><%= tracker.wfid %></a></dd>
+  <dd><a href="<%= path_to 'processes_show', :id => tracker.wfid %>"><%= tracker.wfid %></a></dd>
 
   <dt>Expressions</dt>
   <dd><%= tracker.waiting_expression %></dd>
