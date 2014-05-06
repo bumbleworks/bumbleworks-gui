@@ -9,7 +9,7 @@ module Bumbleworks
         })
       end
 
-      def before_action
+      def set_title
         expose :title => 'Dashboard'
       end
     end
