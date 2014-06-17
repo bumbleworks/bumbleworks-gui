@@ -2,7 +2,9 @@ module Bumbleworks
   module Gui
     class ProcessesController < ApplicationController
       def index
-        expose :processes => Bumbleworks::Process.all
+        redirect path_to('processes_index', :page => 1) unless params[:page]
+        expose :processes => Bumbleworks::Process.all(:limit => 10, :offset => (params[:page].to_i - 1) * 10),
+          :current_page => params[:page]
       end
 
       def show

@@ -7,7 +7,7 @@ feature "Process management" do
     process2 = Bumbleworks.launch!('task_process')
     wait_until { process1.tasks.count == 2 && process2.tasks.count == 2 }
 
-    visit_scoped '/processes'
+    visit_scoped '/processes/page/1'
 
     expect(process_index).to have_processes([process1, process2])
   end

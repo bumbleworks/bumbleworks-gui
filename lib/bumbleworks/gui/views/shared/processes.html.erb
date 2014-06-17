@@ -3,15 +3,13 @@
   <table class="pure-table pure-table-bordered">
     <thead>
       <tr>
-        <th class="sort" data-sort="id">ID</th>
-        <th class="sort" data-sort="entity">Entity</th>
-        <th class="sort" data-sort="definition">Type</th>
-        <% if false # see below %>
-          <th class="sort" data-sort="subscribed-events">Subscribed Events</th>
-          <th class="sort" data-sort="task-count">Tasks</th>
-          <th class="sort" data-sort="error-count">Errors</th>
-          <th class="sort" data-sort="tracker-count">Trackers</th>
-        <% end %>
+        <th data-sort="id">ID</th>
+        <th data-sort="entity">Entity</th>
+        <th data-sort="definition">Type</th>
+        <th data-sort="subscribed-events">Subscribed Events</th>
+        <th data-sort="task-count">Tasks</th>
+        <th data-sort="error-count">Errors</th>
+        <th data-sort="tracker-count">Trackers</th>
       </tr>
     </thead>
     <tbody class="list">
@@ -21,12 +19,10 @@
           <td class="id"><a href="<%= path_to 'processes_show', :id => process.id %>"><%= process.id %></a></td>
           <td class="entity"><%= process.entity_name %></td>
           <td class="definition"><%= process.definition_name %></td>
-          <% if false # need optimization before these will work %>
-            <td class="subscribed-events"><%= process.subscribed_events %></td>
-            <td class="task-count"><%= process.tasks.count %></td>
-            <td class="error-count"><%= process.errors.count %></td>
-            <td class="tracker-count"><%= process.trackers.count %></td>
-          <% end %>
+          <td class="subscribed-events"><%= process.subscribed_events %></td>
+          <td class="task-count"><%= process.tasks.count %></td>
+          <td class="error-count"><%= process.errors.count %></td>
+          <td class="tracker-count"><%= process.trackers.count %></td>
         </tr>
       <% else %>
         <tr>
@@ -37,6 +33,10 @@
     </tbody>
   </table>
 </div>
+
+<% if respond_to?(:current_page) %>
+  <%= render 'shared/pagination', :locals => { :pages => (existing_wfids.count / 10.0).ceil, :current_page => current_page.to_i, :paginated_route => 'processes_index' } %>
+<% end %>
 
 <%= render 'shared/list_js_script', :locals => {
   :list_id => 'processes',

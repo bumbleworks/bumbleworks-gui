@@ -4,7 +4,7 @@
   <%= render 'shared/entity_types', :locals => { :entity_classes => entity_classes} %>
   </dd>
 
-  <dt>Recent Processes (<a href="<%= path_to 'processes_index' %>">View All <%= Bumbleworks::Process.count %></a>)</dt>
+  <dt>Recent Processes (<a href="<%= path_to 'processes_index', :page => 1 %>">View All <%= Bumbleworks::Process.count %></a>)</dt>
   <dd>
     <%= render 'shared/processes', :locals => { :processes => recent_processes } %>
   </dd>

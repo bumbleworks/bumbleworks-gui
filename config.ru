@@ -10,7 +10,7 @@ Bumbleworks.start_worker!
 Widget.truncate!
 WidgetyFidget.truncate!
 
-widget_processes = 20.times.collect do |i|
+widget_processes = 45.times.collect do |i|
   Widget.new(i).launch_process('task_process')
 end
 
@@ -20,7 +20,7 @@ end
 
 wp = Bumbleworks.launch!('waiting_process')
 
-wait_until { wp.reload.trackers.count == 4 }
+wait_until(:timeout => 30) { wp.reload.trackers.count == 4 }
 
 widget_processes.first.tasks.each do |t|
   t.complete

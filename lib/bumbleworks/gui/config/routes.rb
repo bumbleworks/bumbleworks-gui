@@ -10,6 +10,7 @@ Bumbleworks::Gui::Application.set_routes do
     match '/processes/:pid/expressions/:id/cancel', :to => 'expressions#cancel', :methods => [:delete]
     match '/processes/:pid/expressions/:id/kill', :to => 'expressions#kill', :methods => [:delete]
     match '/processes/:id', :to => 'processes#show', :methods => [:get]
+    match '/processes/page/:page', :to => 'processes#index', :methods => [:get]
     match '/processes', :to => 'processes#index', :methods => [:get]
     match '/tasks/:id', :to => 'tasks#show', :methods => [:get]
     match '/tasks', :to => 'tasks#index', :methods => [:get]

@@ -63,3 +63,11 @@ dd {
 .action-button-group {
   width: 7.5em;
 }
+
+/* pagination */
+
+.pagination li.active a {
+  color: #000;
+  pointer-events: none;
+  cursor: default;
+}

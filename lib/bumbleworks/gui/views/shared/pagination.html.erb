@@ -1,0 +1,15 @@
+<div class="pagination pure-menu pure-menu-open pure-menu-horizontal">
+  <ul class="pagination">
+    <% pages.times.map { |p| p + 1 }.each do |page_number| %>
+      <% if page_number == 1 || page_number == pages || (current_page - page_number).abs < 4 %>
+        <li <%= (current_page == page_number) ? 'class="active"' : '' %>>
+          <a href="<%= path_to paginated_route, :page => page_number %>"><%= page_number %></a>
+        </li>
+      <% elsif (current_page - page_number).abs == 4 %>
+        <li class="disabled">
+          <a>...</a>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
