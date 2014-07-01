@@ -1,0 +1,20 @@
+<form action="<%= path_to 'tasks_claim', :id => task.id %>" class="inline" method="post">
+  <input type="hidden" name="_method" value="put">
+  <% if task.claimed? %>
+    <button type="submit" name="action" value="release" class="pure-button button-warning button-top" id="release-button">
+      Release
+    </button>
+  <% else %>
+    <input type="text" name="claimant">
+    <button type="submit" name="action" value="claim" class="pure-button button-error button-bottom" id="claim-button">
+      Claim
+    </button>
+  <% end %>
+</form>
+
+<form action="<%= path_to 'tasks_complete', :id => task.id %>" class="inline" method="post">
+  <input type="hidden" name="_method" value="put">
+  <button type="submit" name="action" value="complete" class="pure-button button-error button-bottom" id="complete-button">
+    Complete
+  </button>
+</form>

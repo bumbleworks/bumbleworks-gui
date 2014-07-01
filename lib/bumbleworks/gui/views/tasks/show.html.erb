@@ -9,5 +9,10 @@
   <dd><%= task.role %></dd>
 
   <dt>Claimant</dt>
-  <dd><%= task.claimant || '<em>unclaimed</em>' %></dd>
+  <dd class="claimant"><%= task.claimant || '<em>unclaimed</em>' %></dd>
+
+  <dt>Actions</dt>
+  <dd>
+    <%= render 'tasks/actions', :locals => { :task => task } %>
+  </dd>
 </dl>

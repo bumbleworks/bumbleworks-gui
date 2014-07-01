@@ -14,6 +14,8 @@ Bumbleworks::Gui::Application.set_routes do
     match '/processes', :to => 'processes#index', :methods => [:get]
     match '/tasks/:id', :to => 'tasks#show', :methods => [:get]
     match '/tasks', :to => 'tasks#index', :methods => [:get]
+    match '/tasks/:id/claim', :to => 'tasks#claim', :methods => [:put]
+    match '/tasks/:id/complete', :to => 'tasks#complete', :methods => [:put]
     match '/', :to => 'dashboards#show', :methods => [:get]
   end
 end
