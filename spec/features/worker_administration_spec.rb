@@ -34,7 +34,7 @@ feature "Worker management" do
     worker2 = Bumbleworks.start_worker!
 
     visit_scoped "/workers"
-    click_button :stop
+    click_button :shutdown
     click_button :purge
     expect(worker_index).not_to have_workers([worker1, worker2])
   end

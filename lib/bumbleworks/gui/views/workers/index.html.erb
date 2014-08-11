@@ -3,12 +3,12 @@
 </div>
 
 <div class="action-button-group">
-  <% { :paused => 'Pause', :running => 'Start', :stopped => 'Stop' }.each do |state, action| %>
+  <% %w(shutdown pause unpause).each do |command| %>
     <form action="<%= path_to 'workers_change_global_state' %>" class="inline" method="post">
       <input type="hidden" name="_method" value="put">
-      <input type="hidden" name="state" value="<%= state %>">
-      <button type="submit" name="action" value="<%= action.downcase %>" class="pure-button button-error button-bottom" id="<%= action.downcase %>-button">
-        <%= action %> All
+      <input type="hidden" name="command" value="<%= command %>">
+      <button type="submit" name="action" value="<%= command %>" class="pure-button button-error button-bottom" id="<%= command %>-button">
+        <%= command.capitalize %> All
       </button>
     </form>
   <% end %>

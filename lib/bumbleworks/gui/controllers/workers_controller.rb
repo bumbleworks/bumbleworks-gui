@@ -12,8 +12,8 @@ module Bumbleworks
       end
 
       def change_global_state
-        new_state = params[:state]
-        Bumbleworks::Worker.change_worker_state(new_state)
+        command = params[:command]
+        Bumbleworks::Worker.send("#{command}_all")
         redirect path_to('workers_index')
       end
 
