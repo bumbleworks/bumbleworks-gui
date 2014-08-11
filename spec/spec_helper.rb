@@ -34,7 +34,7 @@ RSpec.configure do |config|
   end
 
   config.after(:suite, :type => :features) do
-    Bumbleworks.dashboard.worker.shutdown
+    Bumbleworks::Worker.shutdown_all
   end
 
   config.include PathHelpers

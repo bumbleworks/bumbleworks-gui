@@ -1,0 +1,21 @@
+<div>
+  <%= render 'shared/workers', :locals => { :workers => workers} %>
+</div>
+
+<div class="action-button-group">
+  <% { :paused => 'Pause', :running => 'Start', :stopped => 'Stop' }.each do |state, action| %>
+    <form action="<%= path_to 'workers_change_global_state' %>" class="inline" method="post">
+      <input type="hidden" name="_method" value="put">
+      <input type="hidden" name="state" value="<%= state %>">
+      <button type="submit" name="action" value="<%= action.downcase %>" class="pure-button button-error button-bottom" id="<%= action.downcase %>-button">
+        <%= action %> All
+      </button>
+    </form>
+  <% end %>
+  <form action="<%= path_to 'workers_purge_stale' %>" class="inline" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" name="action" value="purge" class="pure-button button-error button-bottom" id="purge-button">
+      Purge Stopped Worker Info
+    </button>
+  </form>
+</div>

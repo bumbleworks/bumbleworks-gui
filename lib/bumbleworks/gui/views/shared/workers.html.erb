@@ -1,0 +1,29 @@
+<div id="workers">
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th class="sort" data-sort="id">ID</th>
+        <th class="sort" data-sort="state">State</th>
+        <th class="sort" data-sort="host">Host</th>
+        <th class="sort" data-sort="pid">PID</th>
+        <th class="sort" data-sort="uptime">Uptime</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+    <% workers.each do |id, info| %>
+      <tr>
+        <td class="id"><a href="<%= path_to 'workers_show', :id => id %>"><%= id %></a></td>
+        <td class="state"><%= info['state'] %></td>
+        <td class="host"><%= "#{info['hostname']} (#{info['ip']})" %></td>
+        <td class="pid"><%= info['pid'] %></td>
+        <td class="uptime"><%= TimeSupport.seconds_to_units_in_words(info['uptime']) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'shared/list_js_script', :locals => {
+  :list_id => 'workers',
+  :rows => workers.count
+} %>

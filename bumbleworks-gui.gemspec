@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "bumbleworks", ">= 0.0.73"
+  spec.add_runtime_dependency "bumbleworks", ">= 0.0.82"
   spec.add_runtime_dependency "rory", ">= 0.3.11"
 
   spec.add_development_dependency "bundler", "~> 1.3"

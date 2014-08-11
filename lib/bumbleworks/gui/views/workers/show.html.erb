@@ -1,0 +1,25 @@
+<dl>
+  <dt>ID</dt>
+  <dd><%= id %></dd>
+
+  <dt>State</dt>
+  <dd><%= info['state'] %></dd>
+
+  <dt>Host</dt>
+  <dd><%= "#{info['hostname']} (#{info['ip']})" %></dd>
+
+  <dt>PID</dt>
+  <dd><%= info['pid'] %></dd>
+
+  <dt>Uptime</dt>
+  <dd><%= TimeSupport.seconds_to_units_in_words(info['uptime']) %></dd>
+
+  <dt>Info Last Saved At</dt>
+  <dd><%= info['put_at'] %></dd>
+
+  <dt>Messages Processed Last Minute</dt>
+  <dd><%= info['processed_last_minute'] %> (avg wait time: <%= (info['wait_time_last_minute'] * 1000).to_i %>ms)</dd>
+
+  <dt>Messages Processed Last Hour</dt>
+  <dd><%= info['processed_last_hour'] %> (avg wait time: <%= (info['wait_time_last_hour'] * 1000).to_i %>ms)</dd>
+</dl>
