@@ -61,9 +61,12 @@ dd {
 .button-secondary { background: rgb(66, 184, 221); } /* lt. blue */
 
 .action-button-group {
-  width: 7.5em;
+  width: 100%;
 }
 
+.inline {
+  display: inline;
+}
 /* pagination */
 
 .pagination li.active a {
