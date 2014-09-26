@@ -1,0 +1,38 @@
+<% view_context = (defined?(context) && context) || :global %>
+<div id="errors">
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <% if view_context == :global %>
+          <th class="sort" data-sort="process">Process</th>
+        <% end %>
+        <% if [:global, :process].include?(view_context) %>
+          <th class="sort" data-sort="expression">Expression</th>
+        <% end %>
+        <th class="sort" data-sort="type">Error Class</th>
+        <th class="sort" data-sort="message">Message</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <% errors.each do |err| %>
+        <tr>
+          <% if view_context == :global %>
+            <td class="process"><a href="<%= path_to 'processes_show', :id => err.process.id %>"><%= err.wfid %></a></td>
+          <% end %>
+          <% if [:global, :process].include?(view_context) %>
+            <td class="expression"><a href="<%= path_to 'expressions_show', :pid => err.process.id, :id => err.expression.expid %>"><%= err.expression.expid %></a></td>
+          <% end %>
+          <td class="type"><a href="<%= path_to 'errors_show', :pid => err.process.id, :id => err.expression.expid %>"><%= err.error_class_name %></a></td>
+          <td class="message"><%= err.message %></td>
+          <td><%= render 'errors/actions', :locals => { :error => err } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render 'shared/list_js_script', :locals => {
+  :list_id => 'expressions',
+  :rows => errors.count
+} %>

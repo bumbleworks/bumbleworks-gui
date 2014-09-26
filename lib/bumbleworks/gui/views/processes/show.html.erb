@@ -27,6 +27,13 @@
     <%= render 'shared/expressions', :locals => { :expressions => process.leaves } %>
   </dd>
 
+  <% unless process.errors.empty? %>
+    <dt>Errors</dt>
+    <dd>
+      <%= render 'shared/errors', :locals => { :errors => process.errors, :context => :process } %>
+    </dd>
+  <% end %>
+
   <script>
     var Fluos = {
       'fluo': {

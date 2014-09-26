@@ -1,0 +1,24 @@
+<dl>
+  <dt>Process</dt>
+  <dd><a href="<%= path_to 'processes_show', :id => process.id %>"><%= process.id %></a></dd>
+
+  <dt>Expression ID</dt>
+  <dd><%= expression.expid %></dd>
+
+  <dt>Error Type</dt>
+  <dd><%= error.error_class_name %></dd>
+
+  <dt>Message</dt>
+  <dd><%= error.message %></dd>
+
+  <dt>Backtrace</dt>
+  <dd>
+    <pre class="prettyprint linenums" style="overflow-x: scroll; white-space: nowrap"><code class="language-ruby"><% error.backtrace.each do |btl| %><%= "#{btl.inspect}\n" %><% end %></code></pre>
+  </dd>
+
+  <dt>Actions</dt>
+  <dd>
+    <%= render 'errors/actions', :locals => { :error => error } %>
+  </dd>
+</dl>
+

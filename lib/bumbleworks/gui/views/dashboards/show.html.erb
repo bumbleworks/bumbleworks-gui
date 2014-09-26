@@ -1,4 +1,11 @@
 <dl>
+  <% unless Bumbleworks.errors.empty? %>
+    <dt>Errors</dt>
+    <dd>
+    <%= render 'shared/errors', :locals => { :errors => Bumbleworks.errors } %>
+    </dd>
+  <% end %>
+
   <dt>Entities</dt>
   <dd>
   <%= render 'shared/entity_types', :locals => { :entity_classes => entity_classes} %>

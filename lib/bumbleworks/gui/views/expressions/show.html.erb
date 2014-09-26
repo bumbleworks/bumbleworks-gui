@@ -9,24 +9,9 @@
   <dd>
     <%= render 'expressions/actions', :locals => { :expression => expression } %>
   </dd>
+
 <% if expression.error %>
-  <h3>Error</h3>
-  <dl>
-    <dd>
-      <dt>Type</dt>
-      <dd><%= expression.error.error_class_name %></dd>
-
-      <dt>Message</dt>
-      <dd><%= expression.error.message %></dd>
-
-      <dt>Backtrace</dt>
-      <dd>
-        <ul>
-          <% expression.error.backtrace.each do |btl| %>
-            <li><%= btl %></li>
-          <% end %>
-        </ul>
-      </dd>
-    </dd>
-  </dl>
+  <dt>Error</dt>
+  <dd><%= render 'shared/errors', :locals => { :errors => [expression.error], :context => :expression } %></dd>
 <% end %>
+</dl>

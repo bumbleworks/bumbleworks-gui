@@ -37,12 +37,12 @@ feature "Expression administration" do
 
     wait_until { process.reload.errors.empty? }
     visit_scoped "/processes/#{process.id}"
-    expect(process_detail).not_to have_error(NaughtyParticipant::StupidError.new("Oh crumb."))
+    expect(process_detail).not_to have_error(error_expression.error)
   end
 
   scenario "Admin views expression errors" do
     visit_scoped "/processes/#{process.id}/expressions/#{error_expression.expid}"
 
-    expect(expression_detail).to have_error(NaughtyParticipant::StupidError.new("Oh crumb."))
+    expect(expression_detail).to have_error(error_expression.error)
   end
 end

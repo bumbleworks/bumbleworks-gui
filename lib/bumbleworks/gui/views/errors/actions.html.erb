@@ -1,0 +1,8 @@
+<div class="action-button-group">
+  <form action="<%= path_to 'errors_replay', :pid => error.process.id, :id => error.expression.expid %>" class="inline" method="post">
+    <input type="hidden" name="_method" value="put">
+    <button type="submit" class="pure-button button-warning button-top" id="replay-button">
+      Replay
+    </button>
+  </form>
+</div>

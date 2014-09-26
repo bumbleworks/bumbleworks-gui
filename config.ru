@@ -22,8 +22,10 @@ wp = Bumbleworks.launch!('waiting_process')
 
 wait_until(:timeout => 30) { wp.reload.trackers.count == 4 }
 
-widget_processes.first.tasks.each do |t|
-  t.complete
+widget_processes.first(3).each do |p|
+  p.tasks.each do |t|
+    t.complete
+  end
 end
 
 if ENV['MOUNT_AT']

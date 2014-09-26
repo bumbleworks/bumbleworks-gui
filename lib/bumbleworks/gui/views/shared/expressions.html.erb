@@ -13,7 +13,7 @@
         <tr>
           <td class="id"><a href="<%= path_to 'expressions_show', :pid => exp.process.id, :id => exp.expid %>"><%= exp.expid %></a></td>
           <td class="tree"><%= exp.tree %></td>
-          <td class="error"><%= exp.error.message if exp.error %></td>
+          <td class="error"><a href="<%= path_to 'errors_show', :pid => exp.process.id, :id => exp.expid %>"><%= exp.error.message if exp.error %></a></td>
           <td><%= render 'expressions/actions', :locals => { :expression => exp } %></td>
         </tr>
       <% end %>

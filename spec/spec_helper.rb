@@ -33,6 +33,10 @@ RSpec.configure do |config|
     Bumbleworks.start_worker!
   end
 
+  config.before(:each) do
+    Bumbleworks.kill_all_processes!
+  end
+
   config.after(:suite, :type => :features) do
     Bumbleworks::Worker.shutdown_all
   end
