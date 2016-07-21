@@ -1,6 +1,7 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'pry'
 require 'capybara/rspec'
 require 'bumbleworks/gui'
 require_relative 'support/drivers/window_driver'
