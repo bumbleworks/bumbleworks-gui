@@ -8,7 +8,7 @@ module Bumbleworks
       end
 
       def show
-         return render_not_found unless process && !process.expressions.empty?
+         return render_not_found("Process `#{params[:id]}` not found.") unless process && !process.expressions.empty?
         expose :process => process
       end
 

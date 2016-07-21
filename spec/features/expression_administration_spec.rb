@@ -49,6 +49,6 @@ feature "Expression administration" do
   scenario "404 for a non existant expressions" do
     visit_scoped "/processes/#{process.id}/expressions/not-real"
 
-    expect(page.body).to eq("Four, oh, four.")
+    expect(page.body).to eq("Expression `not-real` for process `#{process.id}` not found")
   end
 end

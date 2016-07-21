@@ -25,6 +25,6 @@ feature "Process management" do
   scenario "404 for a non existant process" do
     visit_scoped "/processes/not-real"
 
-    expect(page.body).to eq("Four, oh, four.")
+    expect(page.body).to eq("Process `not-real` not found.")
   end
 end
