@@ -2,6 +2,7 @@ module Bumbleworks
   module Gui
     class ExpressionsController < ApplicationController
       def show
+        return render_not_found unless expression
         expose :expression => expression, :process => process
       end
 
@@ -17,7 +18,7 @@ module Bumbleworks
     private
 
       def expression
-        process.expression_at_position(params[:id])
+        @expression ||= process.expression_at_position(params[:id])
       end
 
       def process
