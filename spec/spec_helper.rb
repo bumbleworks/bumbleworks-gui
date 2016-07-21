@@ -18,6 +18,8 @@ Capybara.app = Rack::Builder.new do
   end
 end
 
+ENV['RF_ENV'] = 'test'
+
 require_relative 'fixtures/bumbleworks_config.rb'
 
 RSpec.configure do |config|

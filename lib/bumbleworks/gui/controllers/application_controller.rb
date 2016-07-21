@@ -13,11 +13,15 @@ module Bumbleworks
 
       def present
         super
-      rescue Exception => exception
-        render_exception exception
+      rescue StandardError => exception
+        is_dev_env? ? raise(exception) : render_exception(exception)
       end
 
       private
+
+      def is_dev_env?
+        (ENV['RF_ENV'] || ENV['RAILS_ENV'] || ENV['RORY_ENV'] || '') =~ /development/
+      end
 
       def render_exception(exception)
         @response = [500, { 'Content-type' => 'text/html' }, ["Encountered an error: #{exception}"]]
