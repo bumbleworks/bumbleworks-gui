@@ -8,14 +8,14 @@ module Bumbleworks
       end
 
       def show
-         return render_not_found("Process `#{params[:id]}` not found.") unless process && !process.expressions.empty?
+        return render_not_found("Process `#{params[:pid]}` not found.") unless process && !process.expressions.empty?
         expose :process => process
       end
 
       private
 
       def process
-        @process ||= Bumbleworks::Process.new(params[:id])
+        @process ||= Bumbleworks::Process.new(params[:pid])
       end
     end
   end

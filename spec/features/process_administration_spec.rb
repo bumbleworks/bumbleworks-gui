@@ -22,7 +22,7 @@ feature "Process management" do
     expect(process_detail).to have_entity(Widget.new(56))
   end
 
-  scenario "404 for a non existant process" do
+  scenario "404 for a nonexistant process" do
     visit_scoped "/processes/not-real"
 
     expect(page.body).to eq("Process `not-real` not found.")

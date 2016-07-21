@@ -15,7 +15,7 @@ Bumbleworks::Gui::Application.set_routes do
     match '/errors', :to => 'errors#index', :methods => [:get]
     match '/processes/:pid/expressions/:id/error', :to => 'errors#show', :methods => [:get]
     match '/processes/:pid/expressions/:id/error/replay', :to => 'errors#replay', :methods => [:put]
-    match '/processes/:id', :to => 'processes#show', :methods => [:get]
+    match '/processes/:pid', :to => 'processes#show', :methods => [:get]
     match '/processes/page/:page', :to => 'processes#index', :methods => [:get]
     match '/processes', :to => 'processes#index', :methods => [:get]
     match '/tasks/:id', :to => 'tasks#show', :methods => [:get]
