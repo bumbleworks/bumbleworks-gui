@@ -1,0 +1,22 @@
+language: ruby
+
+addons:
+  postgresql: 9.3
+
+before_install:
+  - export TZ=Canada/Pacific
+
+script: bundle exec rake spec
+
+rvm:
+  - 2.1.7
+
+sudo: false
+cache: bundler
+
+services:
+  - postgresql
+
+branches:
+  only:
+    - master

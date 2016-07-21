@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 
 gemspec
 
-group :development do
+group :development, :test do
   gem "pry"
-  gem "guard-rspec"
+  gem "guard-rspec", '<= 4.6.5'
+  gem "listen", "<= 3.0.6"
 end
