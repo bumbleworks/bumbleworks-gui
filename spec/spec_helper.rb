@@ -1,6 +1,7 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'pry'
 require 'capybara/rspec'
 require 'bumbleworks/gui'
 require_relative 'support/drivers/window_driver'
@@ -17,19 +18,16 @@ Capybara.app = Rack::Builder.new do
   end
 end
 
+ENV['RF_ENV'] = 'test'
+
 require_relative 'fixtures/bumbleworks_config.rb'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
-
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
   config.order = 'random'
 
-  config.before(:suite, :type => :features) do
+  config.before(:suite) do
     Bumbleworks.start_worker!
   end
 
@@ -37,7 +35,7 @@ RSpec.configure do |config|
     Bumbleworks.kill_all_processes!
   end
 
-  config.after(:suite, :type => :features) do
+  config.after(:suite) do
     Bumbleworks::Worker.shutdown_all
   end
 
