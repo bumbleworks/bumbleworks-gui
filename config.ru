@@ -1,4 +1,4 @@
-ENV['RORY_STAGE'] ||= ENV['RACK_ENV'] || 'development'
+ENV['RORY_ENV'] ||= ENV['RACK_ENV'] || 'development'
 
 require 'bumbleworks/gui'
 

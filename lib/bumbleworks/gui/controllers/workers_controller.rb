@@ -18,7 +18,7 @@ module Bumbleworks
       end
 
       def purge_stale
-        Bumbleworks::Worker.purge_stale_worker_info
+        Bumbleworks::Worker::Info.purge_stale_worker_info
         redirect path_to('workers_index')
       end
     end

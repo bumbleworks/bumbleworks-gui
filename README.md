@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/projectdx/bumbleworks-gui.svg?branch=master)](https://travis-ci.org/projectdx/bumbleworks-gui)
+
 # Bumbleworks::Gui
 
 A rack-based web GUI (using [Rory](http://github.com/ravigadad/rory)) for your [Bumbleworks](http://github.com/bumbleworks/bumbleworks) instance.
