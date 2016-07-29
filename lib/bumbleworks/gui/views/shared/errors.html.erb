@@ -18,7 +18,7 @@
       <% errors.each do |err| %>
         <tr>
           <% if view_context == :global %>
-            <td class="process"><a href="<%= path_to 'processes_show', :id => err.process.id %>"><%= err.wfid %></a></td>
+            <td class="process"><a href="<%= path_to 'processes_show', :pid => err.process.id %>"><%= err.wfid %></a></td>
           <% end %>
           <% if [:global, :process].include?(view_context) %>
             <td class="expression"><a href="<%= path_to 'expressions_show', :pid => err.process.id, :id => err.expression.expid %>"><%= err.expression.expid %></a></td>
