@@ -16,7 +16,7 @@
     <% processes.each do |process| %>
       <% if existing_wfids.include?(process.id) %>
         <tr>
-          <td class="id"><a href="<%= path_to 'processes_show', :id => process.id %>"><%= process.id %></a></td>
+          <td class="id"><a href="<%= path_to 'processes_show', :pid => process.id %>"><%= process.id %></a></td>
           <td class="entity"><%= process.entity_name %></td>
           <td class="definition"><%= process.definition_name %></td>
           <td class="subscribed-events"><%= process.subscribed_events %></td>
